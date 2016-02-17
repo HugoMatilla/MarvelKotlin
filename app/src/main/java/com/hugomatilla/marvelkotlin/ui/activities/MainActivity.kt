@@ -4,14 +4,11 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import com.hugomatilla.marvelkotlin.R
-import com.hugomatilla.marvelkotlin.adapters.MainListAdapter
-import com.hugomatilla.marvelkotlin.data.Request
-import com.hugomatilla.marvelkotlin.utils.APIUtils
+import com.hugomatilla.marvelkotlin.adapters.HeroesListAdapter
+import com.hugomatilla.marvelkotlin.domain.RequestHeroesUseCase
 import org.jetbrains.anko.async
 import org.jetbrains.anko.find
-import org.jetbrains.anko.longToast
 import org.jetbrains.anko.uiThread
 
 class MainActivity : AppCompatActivity() {
@@ -30,17 +27,13 @@ class MainActivity : AppCompatActivity() {
 
         val listView: RecyclerView = find(R.id.main_list)
         listView.layoutManager = LinearLayoutManager(this)
-        listView.adapter = MainListAdapter(items)
-
-        val url = APIUtils.getUrl();
-        Log.d(javaClass.simpleName, "URL:" + url)
 
         async() {
-            Request(url).run()
+            val result = RequestHeroesUseCase().execute()
             uiThread {
-                Log.d(javaClass.simpleName, "Request performed")
-                longToast("Request performed")
+                listView.adapter = HeroesListAdapter(result)
             }
+
         }
 
     }

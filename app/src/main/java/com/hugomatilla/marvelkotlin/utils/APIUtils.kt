@@ -24,14 +24,14 @@ object APIUtils {
     }
 
     fun getMd5HashFrom(s: String): String {
-        var m: MessageDigest? = null
+        var messageDigest: MessageDigest? = null
         try {
-            m = MessageDigest.getInstance("MD5")
+            messageDigest = MessageDigest.getInstance("MD5")
         } catch (e: NoSuchAlgorithmException) {
             e.printStackTrace()
         }
-        m!!.update(s.toByteArray(), 0, s.length)
-        val hash = BigInteger(1, m.digest()).toString(16)
+        messageDigest!!.update(s.toByteArray(), 0, s.length)
+        val hash = BigInteger(1, messageDigest.digest()).toString(16)
         return hash
     }
 }

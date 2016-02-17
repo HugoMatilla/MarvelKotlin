@@ -4,14 +4,14 @@ package com.hugomatilla.marvelkotlin.data
  * Created by hugomatilla on 08/02/16.
  */
 
-import android.util.Log
+import com.google.gson.Gson
+import com.hugomatilla.marvelkotlin.utils.APIUtils
 import java.net.URL
 
-class Request(val url: String) {
+class Request() {
 
-    fun run() {
-        val jsonString = URL(url).readText()
-        Log.d(javaClass.simpleName, jsonString)
+    fun execute(): HeroesListResult {
+        val jsonStr = URL(APIUtils.getUrl()).readText()
+        return Gson().fromJson(jsonStr, HeroesListResult::class.java)
     }
-
 }
