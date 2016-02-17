@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MarvelKotlin</string>
+    <string name="list_image_contentent_description">Hero Image</string>
 </resources>

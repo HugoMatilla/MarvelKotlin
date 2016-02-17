@@ -23,7 +23,7 @@ class DomainDataMapper {
         return HeroDomain(
                 hero.name,
                 hero.description,
-                hero.thumbnail.path + hero.thumbnail.extension,
+                hero.thumbnail.path + "." + hero.thumbnail.extension,
                 hero.urls[0].url
         )
     }
