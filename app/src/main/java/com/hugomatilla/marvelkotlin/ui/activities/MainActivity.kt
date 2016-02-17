@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.hugomatilla.marvelkotlin.R
-import com.hugomatilla.marvelkotlin.adapters.HeroesListAdapter
+import com.hugomatilla.marvelkotlin.ui.adapters.HeroesListAdapter
 import com.hugomatilla.marvelkotlin.domain.RequestHeroesUseCase
 import org.jetbrains.anko.async
 import org.jetbrains.anko.find

@@ -5,7 +5,7 @@ package com.hugomatilla.marvelkotlin.data
  */
 
 import com.google.gson.Gson
-import com.hugomatilla.marvelkotlin.utils.APIUtils
+import com.hugomatilla.marvelkotlin.data.utils.APIUtils
 import java.net.URL
 
 class Request() {

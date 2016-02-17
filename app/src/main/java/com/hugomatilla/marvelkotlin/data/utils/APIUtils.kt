@@ -1,7 +1,7 @@
-package com.hugomatilla.marvelkotlin.utils
+package com.hugomatilla.marvelkotlin.data.utils
 
-import com.hugomatilla.marvelkotlin.utils.Keys.PK
-import com.hugomatilla.marvelkotlin.utils.Keys.PRK
+import com.hugomatilla.marvelkotlin.data.utils.Keys.PK
+import com.hugomatilla.marvelkotlin.data.utils.Keys.PRK
 import java.math.BigInteger
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -19,7 +19,7 @@ object APIUtils {
 
     fun getUrl(): String {
         val timeStamp = Date().time.toLong().toString()
-        val hash = APIUtils.getMd5HashFrom(timeStamp + PrivateKey + PublicKey);
+        val hash = getMd5HashFrom(timeStamp + PrivateKey + PublicKey);
         return String.format(baseUrl, timeStamp, PublicKey, hash);
     }
 

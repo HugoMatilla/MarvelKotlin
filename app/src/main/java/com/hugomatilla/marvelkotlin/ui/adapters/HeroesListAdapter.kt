@@ -1,4 +1,4 @@
-package com.hugomatilla.marvelkotlin.adapters
+package com.hugomatilla.marvelkotlin.ui.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
@@ -16,13 +16,12 @@ class HeroesListAdapter(val heroesList: HeroesListDomain) : RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        with(heroesList.heroes[position]) {
+        with(heroesList.get(position)) {
             holder.textView.text = "$name - $description"
         }
-
     }
 
-    override fun getItemCount(): Int = heroesList.heroes.size
+    override fun getItemCount(): Int = heroesList.size()
 
     class ViewHolder(val textView: TextView) : RecyclerView.ViewHolder(textView)
 }
