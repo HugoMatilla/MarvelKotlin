@@ -11,20 +11,18 @@ import com.hugomatilla.marvelkotlin.domain.model.HeroesListDomain
 
 class DomainDataMapper {
 
-    fun convertFromDataModel(heroes: HeroesListResult): HeroesListDomain {
-        return HeroesListDomain(heroes.etag, convertHeroesListToDomain(heroes.data.results))
-    }
+    fun convertFromDataModel(heroes: HeroesListResult) =
+            HeroesListDomain(heroes.etag, convertHeroesListToDomain(heroes.data.results))
+
 
     private fun convertHeroesListToDomain(list: List<Result>): List<HeroDomain> {
         return list.map { convertHeroItemToDomain(it) }
     }
 
-    private fun convertHeroItemToDomain(hero: Result): HeroDomain {
-        return HeroDomain(
-                hero.name,
-                hero.description,
-                hero.thumbnail.path + "." + hero.thumbnail.extension,
-                hero.urls[0].url
-        )
-    }
+    private fun convertHeroItemToDomain(hero: Result) =
+            HeroDomain(
+                    hero.name,
+                    hero.description,
+                    hero.thumbnail.path + "." + hero.thumbnail.extension,
+                    hero.urls[0].url)
 }

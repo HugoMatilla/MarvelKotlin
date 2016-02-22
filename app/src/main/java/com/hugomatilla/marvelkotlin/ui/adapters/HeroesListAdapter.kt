@@ -17,7 +17,7 @@ import org.jetbrains.anko.find
  * Created by hugomatilla on 08/02/16.
  */
 
-class HeroesListAdapter(val heroesList: HeroesListDomain, val itemClick: HeroesListAdapter.OnItemClickListener) : RecyclerView.Adapter<HeroesListAdapter.ViewHolder>() {
+class HeroesListAdapter(val heroesList: HeroesListDomain, val itemClick: (HeroDomain) -> Unit) : RecyclerView.Adapter<HeroesListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.ctx).inflate(R.layout.heroes_list_item, parent, false)
@@ -28,9 +28,9 @@ class HeroesListAdapter(val heroesList: HeroesListDomain, val itemClick: HeroesL
         holder.bindHero(heroesList[position])
     }
 
-    override fun getItemCount(): Int = heroesList.size()
+    override fun getItemCount() = heroesList.size()
 
-    class ViewHolder(view: View, val itemClick: OnItemClickListener) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, val itemClick: (HeroDomain) -> Unit) : RecyclerView.ViewHolder(view) {
 
         private val imageView: ImageView
         private val nameView: TextView
@@ -47,9 +47,5 @@ class HeroesListAdapter(val heroesList: HeroesListDomain, val itemClick: HeroesL
                 itemView.setOnClickListener { itemClick(this) }
             }
         }
-    }
-
-    interface OnItemClickListener {
-        operator fun invoke(hero: HeroDomain)
     }
 }

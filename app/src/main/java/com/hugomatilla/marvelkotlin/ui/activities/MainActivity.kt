@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.hugomatilla.marvelkotlin.R
 import com.hugomatilla.marvelkotlin.domain.RequestHeroesUseCase
-import com.hugomatilla.marvelkotlin.domain.model.HeroDomain
 import com.hugomatilla.marvelkotlin.ui.adapters.HeroesListAdapter
 import org.jetbrains.anko.async
 import org.jetbrains.anko.find
@@ -28,11 +27,7 @@ class MainActivity : AppCompatActivity() {
             val result = RequestHeroesUseCase().execute()
             uiThread {
                 syncFinished = true
-                listView.adapter = HeroesListAdapter(result, object : HeroesListAdapter.OnItemClickListener {
-                    override fun invoke(hero: HeroDomain) {
-                        toast(hero.name)
-                    }
-                })
+                listView.adapter = HeroesListAdapter(result) { toast(it.name) }
             }
         }
     }

@@ -6,7 +6,7 @@ package com.hugomatilla.marvelkotlin.domain.model
 
 data class HeroesListDomain(val etag: String, val heroes: List<HeroDomain>) {
     operator fun get(position: Int): HeroDomain = heroes[position]
-    fun size(): Int = heroes.size
+    fun size() = heroes.size
 }
 
 
