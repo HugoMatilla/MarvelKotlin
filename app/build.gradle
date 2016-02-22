@@ -52,8 +52,10 @@ dependencies {
 
     //kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    //anko
     compile "org.jetbrains.anko:anko-common:$anko_version"
-//    compile "org.jetbrains.anko:anko-sqlite:$anko_version"
+    compile "org.jetbrains.anko:anko-sqlite:$anko_version"
 
     //picasso
     compile "com.squareup.picasso:picasso:2.5.2"
