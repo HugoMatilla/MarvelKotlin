@@ -15,6 +15,8 @@ import org.jetbrains.anko.uiThread
 
 class MainActivity : AppCompatActivity() {
 
+    private var syncFinished: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,16 +27,17 @@ class MainActivity : AppCompatActivity() {
         async() {
             val result = RequestHeroesUseCase().execute()
             uiThread {
-                listView.adapter = HeroesListAdapter(result,
-                        object : HeroesListAdapter.OnItemClickListener {
-                            override fun invoke(hero: HeroDomain) {
-                                toast(hero.name)
-                            }
-                        })
-
+                syncFinished = true
+                listView.adapter = HeroesListAdapter(result, object : HeroesListAdapter.OnItemClickListener {
+                    override fun invoke(hero: HeroDomain) {
+                        toast(hero.name)
+                    }
+                })
             }
-
         }
+    }
 
+    fun isSyncFinished(): Boolean {
+        return syncFinished;
     }
 }

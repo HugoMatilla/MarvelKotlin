@@ -25,7 +25,7 @@ class HeroesListAdapter(val heroesList: HeroesListDomain, val itemClick: HeroesL
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindForecast(heroesList[position])
+        holder.bindHero(heroesList[position])
     }
 
     override fun getItemCount(): Int = heroesList.size()
@@ -40,7 +40,7 @@ class HeroesListAdapter(val heroesList: HeroesListDomain, val itemClick: HeroesL
             imageView = view.find(R.id.image)
         }
 
-        fun bindForecast(hero: HeroDomain) {
+        fun bindHero(hero: HeroDomain) {
             with(hero) {
                 Picasso.with(itemView.ctx).load(thumbnail).into(imageView)
                 nameView.text = name
@@ -52,6 +52,4 @@ class HeroesListAdapter(val heroesList: HeroesListDomain, val itemClick: HeroesL
     interface OnItemClickListener {
         operator fun invoke(hero: HeroDomain)
     }
-
-
 }
