@@ -24,7 +24,7 @@ class MainActivityIdlingResource(private val activity: MainActivity?) : IdlingRe
     val isIdle: Boolean
         get() = activity != null && callback != null && activity.isSyncFinished()
 
-    override fun registerIdleTransitionCallback(resourceCallback: IdlingResource.ResourceCallback) {
-        this.callback = resourceCallback
+    override fun registerIdleTransitionCallback(callback: IdlingResource.ResourceCallback) {
+        this.callback = callback
     }
 }

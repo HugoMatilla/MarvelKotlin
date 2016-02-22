@@ -1,17 +1,19 @@
 package com.hugomatilla.marvelkotlin
 
 import android.support.test.espresso.Espresso
+import android.support.test.espresso.Espresso.onView
+import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.core.deps.guava.collect.Ordering
+import android.support.test.espresso.matcher.ViewMatchers.assertThat
+import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import android.support.v7.widget.RecyclerView
 import android.test.suitebuilder.annotation.LargeTest
 import android.view.View
-
 import com.hugomatilla.marvelkotlin.domain.model.HeroDomain
 import com.hugomatilla.marvelkotlin.ui.activities.MainActivity
 import com.hugomatilla.marvelkotlin.ui.adapters.HeroesListAdapter
-
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
@@ -20,13 +22,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import java.util.ArrayList
-
-import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.assertion.ViewAssertions.matches
-import android.support.test.espresso.matcher.ViewMatchers.assertThat
-import android.support.test.espresso.matcher.ViewMatchers.withId
+import java.util.*
 
 /**
  * Created by hugomatilla on 20/02/16.
@@ -37,8 +33,8 @@ import android.support.test.espresso.matcher.ViewMatchers.withId
 class MainActivityTest {
     private var idlingResource: MainActivityIdlingResource? = null
 
-    @Rule
-    var activityTestRule = ActivityTestRule(MainActivity::class.java)
+    @Rule @JvmField
+    val activityTestRule: ActivityTestRule<MainActivity> = ActivityTestRule(MainActivity::class.java)
 
     @Before
     fun registerIntentServiceIdlingResource() {
@@ -88,7 +84,7 @@ class MainActivityTest {
                 val heroesListAdapter = recyclerView.adapter as HeroesListAdapter
                 heroesNames.clear()
                 heroesNames.addAll(extractNames(heroesListAdapter.heroesList.heroes))
-                return Ordering.natural<Comparable>().isOrdered(heroesNames)
+                return Ordering.natural<String>().isOrdered(heroesNames)
             }
 
             private fun extractNames(heroes: List<HeroDomain>): List<String> {
