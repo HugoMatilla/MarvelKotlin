@@ -5,10 +5,11 @@ import com.hugomatilla.marvelkotlin.domain.model.HeroesListDomain
 import com.hugomatilla.marvelkotlin.domain.model.mappers.DomainDataMapper
 
 /**
- * Created by hugomatilla on 17/02/16.
+ * Created by hugomatilla on 22/02/16.
  */
 
-class RequestHeroesUseCase() : IUseCase<HeroesListDomain> {
+class RequestHeroUseCase(val name: String) : IUseCase<HeroesListDomain> {
+    //Todo finish
     override fun execute(): HeroesListDomain {
         val request = Request()
         return DomainDataMapper().convertFromDataModel(request.execute())

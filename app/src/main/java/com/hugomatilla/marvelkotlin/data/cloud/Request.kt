@@ -1,4 +1,4 @@
-package com.hugomatilla.marvelkotlin.data
+package com.hugomatilla.marvelkotlin.data.cloud
 
 /**
  * Created by hugomatilla on 08/02/16.

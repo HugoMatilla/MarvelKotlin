@@ -1,7 +1,7 @@
 package com.hugomatilla.marvelkotlin.domain.model.mappers
 
-import com.hugomatilla.marvelkotlin.data.HeroesListResult
-import com.hugomatilla.marvelkotlin.data.Result
+import com.hugomatilla.marvelkotlin.data.cloud.HeroesListResult
+import com.hugomatilla.marvelkotlin.data.cloud.Result
 import com.hugomatilla.marvelkotlin.domain.model.HeroDomain
 import com.hugomatilla.marvelkotlin.domain.model.HeroesListDomain
 

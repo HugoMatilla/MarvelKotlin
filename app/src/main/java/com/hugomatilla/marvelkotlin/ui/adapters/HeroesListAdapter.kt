@@ -31,7 +31,7 @@ class HeroesListAdapter(val heroesList: HeroesListDomain, val itemClick: (HeroDo
     class ViewHolder(view: View, val itemClick: (HeroDomain) -> Unit) : RecyclerView.ViewHolder(view) {
         fun bindHero(hero: HeroDomain) {
             with(hero) {
-                Picasso.with(itemView.ctx).load(thumbnail).into(itemView.heroListImageView)
+                Picasso.with(itemView.ctx).load(imageUrl).into(itemView.heroListImageView)
                 itemView.heroListNameView.text = name
                 itemView.setOnClickListener { itemClick(this) }
             }
