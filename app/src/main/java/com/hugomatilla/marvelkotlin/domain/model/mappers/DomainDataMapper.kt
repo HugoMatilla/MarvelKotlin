@@ -21,6 +21,7 @@ class DomainDataMapper {
 
     private fun convertHeroItemToDomain(hero: Result) =
             HeroDomain(
+                    hero.id.toLong(),
                     hero.name,
                     hero.description,
                     hero.thumbnail.path + "." + hero.thumbnail.extension,

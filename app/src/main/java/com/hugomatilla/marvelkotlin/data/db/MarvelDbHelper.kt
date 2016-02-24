@@ -14,22 +14,22 @@ class MarvelDbHelper(ctx: Context = App.instance) :
 
     companion object {
         val DB_NAME = "marvel-kotlin.db"
-        val DB_VERSION = 1
+        val DB_VERSION = 2
         val instance by lazy { MarvelDbHelper() }
     }
 
     override fun onCreate(db: SQLiteDatabase) {
-        db.createTable(HeroTable.NAME, true,
+        db.createTable(HeroTable.TABLE_NAME, true,
                 HeroTable.ID to INTEGER + PRIMARY_KEY,
                 HeroTable.NAME to TEXT,
                 HeroTable.DESCRIPTION to TEXT,
-                HeroTable.IAMGE_URL to TEXT,
+                HeroTable.IMAGE_URL to TEXT,
                 HeroTable.EXTERNAL_URL to TEXT)
 
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.dropTable(HeroTable.NAME, true)
+        db.dropTable(HeroTable.TABLE_NAME, true)
         onCreate(db)
     }
 }

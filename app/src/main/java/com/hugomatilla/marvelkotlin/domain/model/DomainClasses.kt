@@ -10,7 +10,7 @@ data class HeroesListDomain(val etag: String, val heroes: List<HeroDomain>) {
 }
 
 
-data class HeroDomain(val name: String, val description: String, val imageUrl: String, val externalUrl: String)
+data class HeroDomain(val id: Long, val name: String, val description: String, val imageUrl: String, val externalUrl: String)
 
 data class Comic(val name: String, val uri: String)
 

@@ -25,8 +25,9 @@ class HeroDao(var map: MutableMap<String, Any?>) {
     var imageUrl: String by map
     var externalUrl: String by map
 
-    constructor(name: String, description: String, imageUrl: String, externalUrl: String)
+    constructor(id: Long, name: String, description: String, imageUrl: String, externalUrl: String)
     : this(HashMap()) {
+        this._id = id
         this.name = name
         this.description = description
         this.imageUrl = imageUrl

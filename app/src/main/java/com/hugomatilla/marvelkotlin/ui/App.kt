@@ -5,6 +5,7 @@ package com.hugomatilla.marvelkotlin.ui
  */
 
 import android.app.Application
+import com.facebook.stetho.Stetho
 import com.hugomatilla.marvelkotlin.ui.utils.DelegatesExt
 
 class App : Application() {
@@ -16,5 +17,6 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        Stetho.initializeWithDefaults(instance);
     }
 }

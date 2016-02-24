@@ -19,7 +19,7 @@ class DaoDataMapper {
             }
 
     private fun convertHeroFromDomain(hero: HeroDomain) =
-            with(hero) { HeroDao(name, description, imageUrl, externalUrl) }
+            with(hero) { HeroDao(id, name, description, imageUrl, externalUrl) }
 
     fun convertHeroListDaoToDomain(heroesList: List<HeroDao>) = with(heroesList) {
         val heroes = heroesList.map { convertHeroDaoToDomain(it) }
@@ -27,7 +27,7 @@ class DaoDataMapper {
     }
 
     fun convertHeroDaoToDomain(hero: HeroDao) = with(hero) {
-        HeroDomain(name, description, imageUrl, externalUrl)
+        HeroDomain(_id, name, description, imageUrl, externalUrl)
     }
 
     private fun getEtag() = ""
