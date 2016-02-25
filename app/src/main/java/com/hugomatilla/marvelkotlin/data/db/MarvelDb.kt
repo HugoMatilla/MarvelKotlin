@@ -31,13 +31,12 @@ class MarvelDb(val marvelDbHelper: MarvelDbHelper = MarvelDbHelper.instance,
     }
 
     override fun requestHeroByName(name: String) = marvelDbHelper.use {
-
         val query = "${HeroTable.NAME} = ?"
         val hero = select(HeroTable.TABLE_NAME)
                 .whereSimple(query, name)
                 .parseOpt { HeroDao(HashMap(it)) }
 
-        if (hero != null) dataMapper.convertHeroDaoToDomain(hero) else null
+        hero?.let { dataMapper.convertHeroDaoToDomain(hero) }
     }
 
     fun saveHeroes(heroesList: HeroesListDomain) = marvelDbHelper.use {
