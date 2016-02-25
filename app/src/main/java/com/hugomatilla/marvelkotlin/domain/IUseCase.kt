@@ -5,5 +5,5 @@ package com.hugomatilla.marvelkotlin.domain
  */
 
 interface IUseCase<T> {
-    fun execute(): T
+    fun execute(): T?
 }

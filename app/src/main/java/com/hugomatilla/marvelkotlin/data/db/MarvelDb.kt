@@ -22,7 +22,7 @@ class MarvelDb(val marvelDbHelper: MarvelDbHelper = MarvelDbHelper.instance,
                val dataMapper: DaoDataMapper = DaoDataMapper()) : IMarvelDataSource {
 
     override fun requestHeroesList() = marvelDbHelper.use {
-        val query = "${HeroTable.IMAGE_URL} not like  ?"
+        val query = "${HeroTable.IMAGE_URL} not like ?"
         val heroes = select(HeroTable.TABLE_NAME)
                 .whereSimple(query, "%image_not_available%")
                 .parseList { HeroDao(HashMap(it)) }

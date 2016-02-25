@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.hugomatilla.marvelkotlin.R
 import com.hugomatilla.marvelkotlin.domain.model.HeroDomain
 import com.hugomatilla.marvelkotlin.domain.model.HeroesListDomain
-import com.hugomatilla.marvelkotlin.ui.utils.ctx
+import com.hugomatilla.marvelkotlin.ui.extensions.ctx
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.heroes_list_item.view.*
 

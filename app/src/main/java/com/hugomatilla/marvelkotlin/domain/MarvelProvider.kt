@@ -2,6 +2,8 @@ package com.hugomatilla.marvelkotlin.domain
 
 import com.hugomatilla.marvelkotlin.data.cloud.MarvelCloud
 import com.hugomatilla.marvelkotlin.data.db.MarvelDb
+import com.hugomatilla.marvelkotlin.domain.extensions.firstResult
+import com.hugomatilla.marvelkotlin.domain.model.HeroDomain
 import com.hugomatilla.marvelkotlin.domain.model.HeroesListDomain
 
 /**
@@ -15,8 +17,10 @@ class MarvelProvider(val sources: List<IMarvelDataSource> = MarvelProvider.SOURC
         val SOURCES = listOf(MarvelDb(), MarvelCloud())
     }
 
-    //    fun request(): HeroesListDomain = sources.firstResult { requestSource(it) }
-    fun request(): HeroesListDomain = MarvelCloud().requestHeroesList()!!
+    //    fun request(): HeroesListDomain = MarvelCloud().requestHeroesList()!!
+    fun request(): HeroesListDomain = sources.firstResult { requestSource(it) }
+
+    fun requestItem(name: String): HeroDomain? = MarvelDb().requestHeroByName(name)
 
     private fun requestSource(source: IMarvelDataSource): HeroesListDomain? {
         val res = source.requestHeroesList()

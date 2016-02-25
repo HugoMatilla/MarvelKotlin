@@ -1,5 +1,6 @@
 package com.hugomatilla.marvelkotlin.data.cloud
 
+import android.util.Log
 import com.hugomatilla.marvelkotlin.data.db.MarvelDb
 import com.hugomatilla.marvelkotlin.domain.IMarvelDataSource
 import com.hugomatilla.marvelkotlin.domain.model.HeroDomain
@@ -14,6 +15,7 @@ class MarvelCloud(val dataMapper: DomainDataMapper = DomainDataMapper(),
 
     override fun requestHeroesList(): HeroesListDomain? {
         val result = Request().execute()
+        Log.d(this.javaClass.canonicalName, result.toString())
         val converted = dataMapper.convertFromDataModel(result)
         db.saveHeroes(converted)
         return db.requestHeroesList()
