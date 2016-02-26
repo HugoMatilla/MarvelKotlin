@@ -25,6 +25,9 @@
             android:name=".ui.activities.HeroDetailActivity"
             android:parentActivityName=".ui.activities.MainActivity">
         </activity>
+        <activity
+            android:name=".ui.activities.SettingsActivity"
+            android:label="@string/settings"/>
 
     </application>
 

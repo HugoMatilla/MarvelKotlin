@@ -2,4 +2,6 @@
     <string name="app_name">MarvelKotlin</string>
     <string name="hero_image_contentent_description">Hero Image</string>
     <string name="settings">Settings</string>
+    <string name="offset">Skip first X heroes</string>
+    <string name="x">X</string>
 </resources>

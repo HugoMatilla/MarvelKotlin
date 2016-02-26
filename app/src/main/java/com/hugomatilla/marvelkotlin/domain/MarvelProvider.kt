@@ -17,13 +17,11 @@ class MarvelProvider(val sources: List<IMarvelDataSource> = MarvelProvider.SOURC
         val SOURCES = listOf(MarvelDb(), MarvelCloud())
     }
 
-    //    fun request(): HeroesListDomain = MarvelCloud().requestHeroesList()!!
-    fun request(): HeroesListDomain = sources.firstResult { requestSource(it) }
+    fun request(): HeroesListDomain = requestToSources { it.requestHeroesList() }
+    fun requestWithOffset(offset: Long): HeroesListDomain = MarvelCloud().requestHeroesList(offset)!!
 
-    fun requestItem(name: String): HeroDomain? = MarvelDb().requestHeroByName(name)
+    fun requestItem(name: String): HeroDomain? = requestToSources { it.requestHeroByName(name) }
 
-    private fun requestSource(source: IMarvelDataSource): HeroesListDomain? {
-        val res = source.requestHeroesList()
-        return if (res != null) res else null
-    }
+
+    private fun <T : Any> requestToSources(f: (IMarvelDataSource) -> T?): T = sources.firstResult { f(it) }
 }
